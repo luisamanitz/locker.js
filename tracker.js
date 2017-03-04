@@ -1,6 +1,6 @@
 let fs = require('fs'),
 
-	Tracker = function (user) {
+	Tracker = function (user) {// TODO use settings
 		let cache,
 			error = function (msg) {
 				console.log(msg)
@@ -43,20 +43,29 @@ let fs = require('fs'),
 			cache = JSON.parse(cache);
 		}
 
-		console.log(cache);
 
 		/**
 		 * Set new item
 		 * @param {Object} item
 		 */
-		this.set = (item) => {
-			if (item && item.value && item.description) {
-				cache.items.push(item);
+		this.set = (item) => {// TODO add id
+			let now;
+
+			if (!item || !item.value || !item.description) {
+				error('Item Structure falsch.');
 
 				return this;
 			}
 
-			error('falscher Item Typ');
+			now = Date.now();
+
+			item.createTime = now;
+
+			if (!item.time) {
+				item.time = now;
+			}
+
+			cache.items.push(item);
 			
 			return this;
 		};
@@ -66,7 +75,8 @@ let fs = require('fs'),
 
 
 		this.save = () => {
-
+			let cacheString = JSON.stringify(cache);
+			fs.writeFileSync(filePath, cacheString);
 			return this;
 		};
 
