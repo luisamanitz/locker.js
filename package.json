@@ -1,0 +1,23 @@
+{
+  "name": "locker-js",
+  "version": "0.0.1",
+  "description": "log whatever you want and save it in json file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisamanitz/locker.js.git"
+  },
+  "keywords": [
+    "log",
+    "track"
+  ],
+  "author": "Luisa Manitz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luisamanitz/locker.js/issues"
+  },
+  "homepage": "https://github.com/luisamanitz/locker.js#readme"
+}
